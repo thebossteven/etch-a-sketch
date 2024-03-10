@@ -3,15 +3,30 @@ let sketchColor = 'black';
 let squareGrid = document.querySelector(".squareGrid");
 let resetButton = document.querySelector(".reset");
 let colorButton = document.querySelector(".colorChange");
+let noOfSquares = 16;
+let createButton = document.querySelector(".create");
 
-resetButton.addEventListener("click", ()=>{
-    square.style.color = "aqua";
+createButton.addEventListener("click", () =>{
+
+    noOfSquares = prompt("How many squares? (max: 120)", "16");
+    if(noOfSquares <= 120){
+    squareGrid.innerHTML = "";
+    createGrid(noOfSquares);
+    }else{
+        alert("number not valid");
+    }
 })
 
+resetButton.addEventListener("click", ()=>{
+    squareGrid.innerHTML = "";
+    createGrid(noOfSquares);
+})
+
+
 colorButton.addEventListener("click", () =>{
-    switch(getRandomInt(0,5)){
+    switch(counter()){
         case 0:
-            sketchColor = "purple";
+            sketchColor = "black";
             break;
         case 1:   
         sketchColor = "blue";
@@ -33,10 +48,12 @@ colorButton.addEventListener("click", () =>{
 
 })
 
-for(let i = 1; i <= 64; i++){
+
+function createGrid(noOfSquares){
+for(let i = 1; i <= noOfSquares; i++){
     let row = document.createElement('div');
     row.classList.add("row");
-    for(let i = 1; i<= 64; i++){
+    for(let i = 1; i<= noOfSquares; i++){
         let square = document.createElement('div');
     square.classList.add("square");
     square.addEventListener('mouseover', () =>{
@@ -46,9 +63,12 @@ for(let i = 1; i <= 64; i++){
     }
     squareGrid.appendChild(row);   
 }
-
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+};
+let count = 0;
+function counter() {
+   count++;
+   if(count >=5){
+    count = 0;
+   }
+   return count;
   }

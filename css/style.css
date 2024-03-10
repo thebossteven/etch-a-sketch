@@ -1,11 +1,26 @@
+body{
+    background-color: blanchedalmond;
+}
+
 h1{
     text-align: center;
+    font-size: 5rem;
+    margin: 0.5rem;
 }
 
 .buttons{
     display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
+button{
+    margin: 1.5rem;
+    background-color: gray;
+    color: whitesmoke;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
 
 .squareGrid{
     display: flex;
